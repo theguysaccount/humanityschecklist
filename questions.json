@@ -33,12 +33,14 @@
         {
           "id": "highest-leverage-way-to-change-the-world",
           "q": "What is the highest-leverage way to change the world?",
-          "a": "Systems thinker Donella Meadows ranked the places to intervene in a system and put a society's paradigm, the shared story about how things work, near the very top. Humanity's Checklist follows the same logic: the higher an item sits in the triangle, the more of the world it changes."
+          "a": "Systems thinker Donella Meadows ranked the places to intervene in a system and put a society's paradigm, the shared story about how things work, near the very top. Humanity's Checklist follows the same logic: the higher an item sits in the triangle, the more of the world it changes.",
+          "read": "leverage-points-to-change-the-world"
         },
         {
           "id": "systems-thinking-world-problems",
           "q": "How does systems thinking apply to world problems?",
-          "a": "Systems thinking looks for the feedback loops that keep producing a result, rather than the result itself. The checklist applies that lens to humanity as a whole and names six loops, from the story we tell to who gets to build, that keep generating crises."
+          "a": "Systems thinking looks for the feedback loops that keep producing a result, rather than the result itself. The checklist applies that lens to humanity as a whole and names six loops, from the story we tell to who gets to build, that keep generating crises.",
+          "read": "leverage-points-to-change-the-world"
         },
         {
           "id": "what-is-the-metacrisis",
@@ -53,32 +55,38 @@
         {
           "id": "does-charity-work",
           "q": "Why hasn't charity solved world problems?",
-          "a": "Hundreds of billions of dollars go to charity every year, more than $500 billion in the US alone. Most of it treats symptoms. That work relieves real suffering, but it rarely changes the systems that create the suffering, so the need comes back year after year."
+          "a": "Hundreds of billions of dollars go to charity every year, more than $500 billion in the US alone. Most of it treats symptoms. That work relieves real suffering, but it rarely changes the systems that create the suffering, so the need comes back year after year.",
+          "read": "why-charity-hasnt-solved-world-problems"
         },
         {
           "id": "systemic-change-vs-charity",
           "q": "What is the difference between charity and systemic change?",
-          "a": "Charity treats the person or place in front of it. Systemic change alters the rules, incentives and stories that decide how many people end up in need. The world does not have a charity problem. It has a coordination, vision and status problem."
+          "a": "Charity treats the person or place in front of it. Systemic change alters the rules, incentives and stories that decide how many people end up in need. The world does not have a charity problem. It has a coordination, vision and status problem.",
+          "read": "why-charity-hasnt-solved-world-problems"
         },
         {
           "id": "systemic-effective-altruism",
           "q": "What is systemic effective altruism?",
-          "a": "Effective altruism asks how to do the most good with each dollar. Systemic effective altruism adds that the biggest returns come from changing the systems that generate problems, not from buying more relief inside them. Our view is short: the only effective altruism is systemic."
+          "a": "Effective altruism asks how to do the most good with each dollar. Systemic effective altruism adds that the biggest returns come from changing the systems that generate problems, not from buying more relief inside them. Our view is short: the only effective altruism is systemic.",
+          "read": "effective-altruism-vs-humanitys-checklist"
         },
         {
           "id": "critique-of-effective-altruism",
           "q": "What is the main critique of effective altruism?",
-          "a": "A common critique is that measuring cost per life saved favors measurable relief over harder-to-measure system change. Humanity's Checklist agrees that relief matters, and argues that the highest-impact giving goes to the root causes that keep creating the need for relief."
+          "a": "A common critique is that measuring cost per life saved favors measurable relief over harder-to-measure system change. Humanity's Checklist agrees that relief matters, and argues that the highest-impact giving goes to the root causes that keep creating the need for relief.",
+          "read": "effective-altruism-vs-humanitys-checklist"
         },
         {
           "id": "most-effective-charity",
           "q": "What is the most effective way to donate to change the world?",
-          "a": "Fund the sources rather than the symptoms. A dollar that improves how billions of people coordinate, imagine the future or spend their attention reaches every problem downstream of those systems. That is why the whole checklist is pitched as a single, focused $5 million effort."
+          "a": "Fund the sources rather than the symptoms. A dollar that improves how billions of people coordinate, imagine the future or spend their attention reaches every problem downstream of those systems. That is why the whole checklist is pitched as a single, focused $5 million effort.",
+          "read": "effective-altruism-vs-humanitys-checklist"
         },
         {
           "id": "what-could-5-million-change",
           "q": "What if $5 million was all it took?",
-          "a": "That is the question this project asks. Five million dollars is less than nine minutes of what the world spends on designer goods. Aimed precisely at the six sources on the checklist, we believe it could start a domino effect that charity budgets thousands of times larger have not."
+          "a": "That is the question this project asks. Five million dollars is less than nine minutes of what the world spends on designer goods. Aimed precisely at the six sources on the checklist, we believe it could start a domino effect that charity budgets thousands of times larger have not.",
+          "read": "what-if-5-million-was-all-it-took"
         },
         {
           "id": "how-much-is-given-to-charity",
@@ -88,7 +96,8 @@
         {
           "id": "root-cause-philanthropy",
           "q": "How do I give to root causes instead of symptoms?",
-          "a": "Look for projects that change how people decide, connect, see the future or award status, and that would make many other problems easier at once. Each item on the checklist names one such project, called a beachhead, that you can fund or help build."
+          "a": "Look for projects that change how people decide, connect, see the future or award status, and that would make many other problems easier at once. Each item on the checklist names one such project, called a beachhead, that you can fund or help build.",
+          "read": "why-charity-hasnt-solved-world-problems"
         },
         {
           "id": "what-is-charitology",
@@ -104,24 +113,28 @@
           "id": "why-the-story-matters",
           "q": "Why does the story humanity tells itself matter?",
           "a": "People act out the story they believe. If the shared story is that the future is doomed and nobody can change it, people stop trying, and the prediction comes true. A story in which every problem is solvable makes people look for solutions and partners.",
-          "item": "story"
+          "item": "story",
+          "read": "protopia-the-story-we-tell-ourselves"
         },
         {
           "id": "what-is-protopia",
           "q": "What is protopia?",
           "a": "Protopia, a term coined by writer Kevin Kelly, describes a world that gets a little better every year instead of a perfect utopia or a collapsing dystopia. It is the direction Humanity's Checklist points toward: steady, compounding improvement that we build together.",
-          "item": "story"
+          "item": "story",
+          "read": "protopia-the-story-we-tell-ourselves"
         },
         {
           "id": "utopia-vs-dystopia-vs-protopia",
           "q": "Utopia, dystopia or protopia: which future are we heading for?",
           "a": "None of them is fixed. Utopia promises perfection and dystopia predicts collapse; both make people passive. Protopia asks what we can make slightly better this year. Which future we get depends largely on which story we act on.",
-          "item": "story"
+          "item": "story",
+          "read": "protopia-the-story-we-tell-ourselves"
         },
         {
           "id": "humanity-as-a-superorganism",
           "q": "Is humanity a superorganism?",
-          "a": "In a useful sense, yes. Eight billion people connected by trade, media and the internet behave like one body with a nervous system, a reward system and an imagination. World problems are its symptoms, and the checklist treats the organs that produce them."
+          "a": "In a useful sense, yes. Eight billion people connected by trade, media and the internet behave like one body with a nervous system, a reward system and an imagination. World problems are its symptoms, and the checklist treats the organs that produce them.",
+          "read": "humanity-as-a-superorganism"
         }
       ]
     },
@@ -132,13 +145,15 @@
           "id": "every-problem-is-a-coordination-problem",
           "q": "Is every problem a coordination problem?",
           "a": "Nearly every large problem is. The knowledge, money and people needed to solve climate change or hunger already exist; what fails is getting them to the same place, at the same time, toward the same goal.",
-          "item": "coordination"
+          "item": "coordination",
+          "read": "every-problem-is-a-coordination-problem"
         },
         {
           "id": "what-is-a-coordination-problem",
           "q": "What is a coordination problem?",
           "a": "A coordination problem happens when everyone would be better off acting together but no one can act alone without losing out. Arms races, overfishing and climate change are classic examples, sometimes described as multipolar traps or Moloch.",
-          "item": "coordination"
+          "item": "coordination",
+          "read": "every-problem-is-a-coordination-problem"
         },
         {
           "id": "find-people-who-share-your-vision",
@@ -167,31 +182,36 @@
           "id": "social-media-nervous-system",
           "q": "Is social media humanity's nervous system?",
           "a": "It works like one. Around five billion people use social media, and what it amplifies shapes what everyone feels and does next. Right now it is tuned for outrage because outrage holds attention, which keeps the whole organism anxious and divided.",
-          "item": "attention"
+          "item": "attention",
+          "read": "doomscrolling-to-bloomscrolling"
         },
         {
           "id": "what-is-bloomscrolling",
           "q": "What is bloomscrolling?",
           "a": "Bloomscrolling is the opposite of doomscrolling: a feed ranked by the value it adds to your life, measured in who you become, not how long you stay. Bloomscroll is the beachhead project for the attention item on the checklist.",
-          "item": "attention"
+          "item": "attention",
+          "read": "doomscrolling-to-bloomscrolling"
         },
         {
           "id": "redesign-social-media-for-wellbeing",
           "q": "How could social media be redesigned for wellbeing?",
           "a": "Change what the feed optimizes for. Instead of time on site, rank posts by whether they leave people better off and move them from a victim state into a problem-solving state, including showing them problems they can actually help solve.",
-          "item": "attention"
+          "item": "attention",
+          "read": "doomscrolling-to-bloomscrolling"
         },
         {
           "id": "status-and-luxury-spending",
           "q": "How much does the world spend on luxury goods?",
           "a": "More than $300 billion a year goes to personal designer goods such as handbags, clothing and watches. For a stretch, the richest person on Earth was Bernard Arnault, whose company sells Louis Vuitton, Dior and Tiffany. Status is sold by the bag.",
-          "item": "status"
+          "item": "status",
+          "read": "giving-as-the-new-status-symbol"
         },
         {
           "id": "make-giving-a-status-symbol",
           "q": "Can generosity become a status symbol?",
           "a": "Status follows culture, and culture can change. Charity designer goods would make the coolest thing you can wear a sign of how much you gave. If even part of luxury spending followed, it would fund the rest of the checklist many times over.",
-          "item": "status"
+          "item": "status",
+          "read": "giving-as-the-new-status-symbol"
         },
         {
           "id": "internet-gatekeepers",
@@ -218,7 +238,8 @@
         {
           "id": "change-the-world-with-little-money",
           "q": "Can you change the world with a small amount of money?",
-          "a": "Yes, if it is aimed at leverage. A small sum spent on a system that billions of people pass through can outdo a large sum spent on one symptom. That is the bet behind asking whether $5 million is all it takes."
+          "a": "Yes, if it is aimed at leverage. A small sum spent on a system that billions of people pass through can outdo a large sum spent on one symptom. That is the bet behind asking whether $5 million is all it takes.",
+          "read": "what-if-5-million-was-all-it-took"
         },
         {
           "id": "contribute-with-ai-agents",

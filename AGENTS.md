@@ -12,7 +12,9 @@ Humanity's Checklist argues that every world problem grows from six sources, dra
 |---|---|
 | `humanitys-checklist.html` | The main page: content, styles and script in one file. The six items live in the `ITEMS` list and the world problems in `PROBLEMS`, near the top of the `<script>`. |
 | `questions.json` | The Questions page (`/questions/`): long-tail questions people search, each with a plain answer. |
-| `build.py` | Builds everything into `docs/` (Python standard library only). |
+| `content/whitepaper.md` | The whitepaper (`/whitepaper/`): the philosophy and method. |
+| `content/blog/*.md` | Blog posts (`/blog/<file name>/`): long-tail essays that each answer one search and lead to the checklist. |
+| `build.py` | Builds everything into `docs/` (Python standard library only), including the sitemap, RSS feed, `llms.txt` and `llms-full.txt`. |
 | `docs/` | Build output. Not committed; GitHub Actions builds and deploys it on every push to `main`. |
 
 ## Common changes
@@ -22,6 +24,23 @@ Humanity's Checklist argues that every world problem grows from six sources, dra
 - `q`: the question the way a person would type it into a search box
 - `a`: a plain answer of two to four sentences
 - `item` (optional): `story`, `coordination`, `vision`, `attention`, `status` or `gatekeepers`, to link the answer to that item's deep dive
+
+**Write a blog post.** Add `content/blog/your-slug.md`. The file name becomes the URL, so use the words people search for. Start with front matter:
+
+```
+---
+title: The question or claim, as a headline
+description: One or two sentences; also used for search results and the feed
+date: YYYY-MM-DD
+item: optional checklist item (story, coordination, vision, attention, status, gatekeepers)
+related: two or three existing post slugs, comma separated
+keywords: the long-tail phrases this post answers, comma separated
+---
+```
+
+Then write the body in Markdown: `##` and `###` headings, paragraphs, `-` and `1.` lists, `>` quotes, pipe tables, `**bold**`, `*italic*` and `[links](/path/)`. Keep list items on one line. Each post should answer one question well, link to at least one other post, and say plainly how its topic connects to the checklist. The build adds the call to action, related links, structured data, feed entry and sitemap entry. Don't add links to the blog from the homepage.
+
+You can also link a question in `questions.json` to a post by adding `"read": "post-slug"`.
 
 **Improve a deep dive.** Edit the matching object in `ITEMS` in `humanitys-checklist.html` (`infection`, `flip`, `build`, `dominoes`, `problems`).
 

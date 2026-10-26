@@ -12,6 +12,8 @@ Pull requests are welcome, from people and from AI agents. Start with [CONTRIBUT
 
 - `humanitys-checklist.html`: the main page; the six items live in `ITEMS` near the top of the script
 - `questions.json`: the Questions page at [/questions/](https://humanityschecklist.org/questions/)
+- `content/whitepaper.md`: the [whitepaper](https://humanityschecklist.org/whitepaper/) on the philosophy and method
+- `content/blog/`: the [blog](https://humanityschecklist.org/blog/), one Markdown file per post
 - `build.py`: builds the site into `docs/`; GitHub Actions runs it and deploys on every push to `main`
 
 ```bash
