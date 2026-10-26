@@ -15,7 +15,7 @@ mkdir -p "$OUT"
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Every world problem grows from a few sources. Humanity's Checklist names the six, the beachhead that flips each one, and why $5 million apiece is the most effective systemic giving there is.">
+<meta name="description" content="Every world problem grows from a few sources. Humanity's Checklist names the six and the beachhead that flips each one, and asks: what if $5 million, spent systemically, was all it took?">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://humanityschecklist.com/">
 <meta property="og:title" content="Humanity's Checklist">

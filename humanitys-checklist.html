@@ -301,6 +301,11 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
 .why-card p { color: var(--ink-2); max-width: 52ch; }
 
 .math { background: var(--card); border-block: 1px solid var(--rule); }
+.thesis {
+  font-family: var(--font-display); font-weight: 800; font-stretch: 72%;
+  font-size: clamp(1.6rem, 1.15rem + 1.8vw, 2.5rem); line-height: 1.02; color: var(--bloom-ink);
+  max-width: 24ch; text-wrap: balance;
+}
 .kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .kpi { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 8px; padding-top: 14px; border-top: 2px solid var(--ink); }
 .kpi dd {
@@ -539,27 +544,28 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
     <div class="wrap stack">
       <div class="section-head">
         <p class="eyebrow">The math</p>
-        <h2 class="display-2" id="math-title">$5 million per checkbox</h2>
-        <p class="section-lead">We believe each beachhead can be seeded for about $5 million. Six items comes to roughly $30 million, aimed at the sources of every problem below them. Spent with that focus, we think it's the most effective systemic giving on the planet.</p>
+        <h2 class="display-2" id="math-title">What if $5 million was all it took?</h2>
+        <p class="section-lead">Hundreds of billions of dollars go to charity every year. What if $5 million, spent correctly, was all it actually took? The world doesn't have a charity problem. It has a coordination, vision and status problem. The resources exist, and no amount of funding for Band-Aids will ever heal the core.</p>
+        <p class="thesis">The only effective altruism is systemic.</p>
       </div>
       <dl class="kpis">
-        <div class="kpi"><dt>to seed one beachhead</dt><dd>$5M</dd></div>
-        <div class="kpi"><dt>items on the list</dt><dd>6</dd></div>
-        <div class="kpi"><dt>to fund the whole checklist</dt><dd>$30M</dd></div>
+        <div class="kpi"><dt>to go after all six sources</dt><dd>$5M</dd></div>
+        <div class="kpi"><dt>sources on the list</dt><dd>6</dd></div>
+        <div class="kpi"><dt>of the world's designer-goods spending</dt><dd>9 min</dd></div>
       </dl>
       <figure class="hours">
         <figcaption class="hours-cap">
           <h3 class="h3">A year of designer-goods spending, one square per hour</h3>
-          <p>The world spends more than $300 billion a year on designer goods, over $34 million every hour. At that pace, by 1 a.m. on January 1 it has spent enough to fund the entire checklist.</p>
+          <p>The world spends more than $300 billion a year on designer goods, over $34 million every hour. At that pace, it spends enough to fund the entire checklist in the first nine minutes of January 1.</p>
         </figcaption>
-        <p class="hours-pin" aria-hidden="true"><span class="pin-caret"></span>Jan 1, 12&ndash;1 a.m. &middot; the whole checklist</p>
+        <p class="hours-pin" aria-hidden="true"><span class="pin-caret"></span>Jan 1, 12:00&ndash;12:09 a.m. &middot; the whole checklist</p>
         <div class="hours-stage" id="hours-stage">
           <canvas id="hours" aria-hidden="true"></canvas>
           <div class="tip tip-sm" id="hours-tip" hidden></div>
         </div>
         <p class="hours-key">
           <span><i class="sw"></i>one hour of designer-goods spending</span>
-          <span><i class="sw is-bloom"></i>the hour that funds all six</span>
+          <span><i class="sw is-bloom"></i>the first hour: nine minutes of it funds all six</span>
           <span>8,760 hours in a year</span>
         </p>
       </figure>
@@ -575,8 +581,8 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
       </div>
       <div class="join-grid">
         <article class="join-card">
-          <h3 class="h3">Fund a beachhead</h3>
-          <p>Back one item or the whole list. Every dollar goes to a source.</p>
+          <h3 class="h3">Fund the checklist</h3>
+          <p>$5 million goes after all six sources. Every dollar goes to a source.</p>
         </article>
         <article class="join-card">
           <h3 class="h3">Build one</h3>
@@ -628,7 +634,7 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
     <section class="dive-sec"><h3 class="box-label">Dominoes it tips</h3><ul class="dominoes" id="dive-dominoes"></ul></section>
     <section class="dive-sec"><h3 class="box-label">Moves most directly</h3><ul class="chips" id="dive-problems"></ul></section>
     <div class="dive-ask">
-      <p class="ask"><span class="ask-num">$5M</span><span class="ask-label">to seed this beachhead</span></p>
+      <p class="ask"><span class="ask-num">$5M</span><span class="ask-label">for all six, this one included</span></p>
       <label class="imagine" for="dive-check">
         <input type="checkbox" class="sr-only" id="dive-check">
         <span class="box-ui" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7"/></svg></span>
@@ -1012,7 +1018,7 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
     if (withRipple && origin && motion) ripple(origin);
     const n = checked.size;
     statusEl.textContent = n === 0 ? "Tick a box to imagine it done."
-      : n === ITEMS.length ? "All six checked. Everything downstream is in bloom, for about $30 million."
+      : n === ITEMS.length ? "All six checked. Everything downstream is in bloom, for $5 million."
       : `${n} of 6 checked. Watch the base of the triangle.`;
     resetBtn.hidden = n === 0;
     card.classList.toggle("is-complete", n === ITEMS.length);
@@ -1119,7 +1125,7 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
     const day = new Date(2026, 0, 1 + Math.floor(i / 24)).toLocaleDateString("en-US", { month: "short", day: "numeric" });
     const a = i % 24, b = (a + 1) % 24;
     const span = ampm(a) === ampm(b) ? `${h12(a)}–${h12(b)} ${ampm(a)}` : `${h12(a)} ${ampm(a)}–${h12(b)} ${ampm(b)}`;
-    return i === 0 ? `${day}, ${span} · enough to fund all six` : `${day}, ${span} · over $34M on designer goods`;
+    return i === 0 ? `${day}, ${span} · enough to fund the whole checklist six times over` : `${day}, ${span} · over $34M on designer goods`;
   }
   hoursCanvas.addEventListener("pointermove", e => {
     if (!hoursGeo) return;
