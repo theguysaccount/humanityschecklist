@@ -22,6 +22,10 @@ DOMAIN = "humanityschecklist.org"
 SITE = f"https://{DOMAIN}"
 REPO = "https://github.com/theguysaccount/humanityschecklist"
 TODAY = datetime.date.today().isoformat()
+# IndexNow (Bing, Yandex, Seznam, Naver, Yep): the key is public by design; engines
+# fetch /<key>.txt to confirm we own the site before accepting a ping.
+INDEXNOW_KEY = "129b58e44aa85f4829e64877c2dd7a76"
+PAGES = ["/", "/questions/"]
 
 FAVICON = (
     "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -4.6 30 30'>"
@@ -225,12 +229,13 @@ def build_questions(page_head, groups):
 def build_meta_files(all_items):
     (OUT / "CNAME").write_text(DOMAIN + "\n")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+    urls = "\n".join(f"  <url><loc>{SITE}{p}</loc><lastmod>{TODAY}</lastmod></url>" for p in PAGES)
     (OUT / "sitemap.xml").write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>{SITE}/</loc><lastmod>{TODAY}</lastmod></url>
-  <url><loc>{SITE}/questions/</loc><lastmod>{TODAY}</lastmod></url>
+{urls}
 </urlset>
 """)
+    (OUT / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY)
     questions = "\n".join(f"- [{i['q']}]({SITE}/questions/#{i['id']})" for i in all_items)
     (OUT / "llms.txt").write_text(f"""# Humanity's Checklist
 
@@ -264,7 +269,21 @@ Below them sit every world problem: climate change, war, poverty, hunger, diseas
 """)
 
 
+def indexnow_payload():
+    """The JSON body for https://api.indexnow.org/indexnow, listing every page."""
+    return json.dumps({
+        "host": DOMAIN,
+        "key": INDEXNOW_KEY,
+        "keyLocation": f"{SITE}/{INDEXNOW_KEY}.txt",
+        "urlList": [SITE + p for p in PAGES],
+    })
+
+
 def main():
+    import sys
+    if "--indexnow-payload" in sys.argv:
+        print(indexnow_payload())
+        return
     source = (ROOT / "humanitys-checklist.html").read_text()
     groups = json.loads((ROOT / "questions.json").read_text())["groups"]
     ids = [i["id"] for g in groups for i in g["items"]]
