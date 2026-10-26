@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Every world problem grows from a few sources. Humanity's Checklist names the six and the beachhead that flips each one, and asks: what if $5 million, spent systemically, was all it took?">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://humanityschecklist.com/">
+<meta property="og:url" content="https://humanityschecklist.org/">
 <meta property="og:title" content="Humanity's Checklist">
 <meta property="og:description" content="Six things to fix so we can fix everything else.">
 <meta name="twitter:card" content="summary">
@@ -13,7 +13,7 @@
 <meta name="twitter:description" content="Six things to fix so we can fix everything else.">
 <meta name="theme-color" content="#EDF1ED" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0B1613" media="(prefers-color-scheme: dark)">
-<link rel="canonical" href="https://humanityschecklist.com/">
+<link rel="canonical" href="https://humanityschecklist.org/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -4.6 30 30'><rect x='-3' y='-4.6' width='30' height='30' rx='7' fill='%23EDF1ED'/><polygon points='12,0 18,10.39 6,10.39' fill='%23D23560'/><polygon points='6,10.39 12,20.78 0,20.78' fill='%230F2621'/><polygon points='18,10.39 24,20.78 12,20.78' fill='%230F2621'/></svg>">
 <title>Humanity's Checklist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -611,13 +611,13 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
           <p>Item one is the story we tell ourselves. Sharing this page is how it starts to change.</p>
           <div class="copy-row">
             <button class="btn" id="copy-link" type="button">Copy link</button>
-            <span class="copy-val" id="link-val">humanityschecklist.com</span>
+            <span class="copy-val" id="link-val">humanityschecklist.org</span>
           </div>
         </article>
       </div>
       <div class="contact">
         <span class="contact-label">Get in touch</span>
-        <a class="contact-mail" id="mail-link" href="mailto:hello@humanityschecklist.com">hello@humanityschecklist.com</a>
+        <a class="contact-mail" id="mail-link" href="mailto:hello@humanityschecklist.org">hello@humanityschecklist.org</a>
         <button class="btn btn-quiet" id="copy-mail" type="button">Copy address</button>
       </div>
     </div>
@@ -777,8 +777,8 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
     ["distrust", "Distrust"], ["polarization", "Polarization"], ["misinformation", "Misinformation"],
     ["loneliness", "Loneliness"], ["mental", "Mental health"], ["addiction", "Addiction"]
   ].map(([id, label]) => ({ id, label }));
-  const CONTACT = "hello@humanityschecklist.com";
-  const SITE = "https://humanityschecklist.com";
+  const CONTACT = "hello@humanityschecklist.org";
+  const SITE = "https://humanityschecklist.org";
 
   const byId = Object.fromEntries(ITEMS.map(it => [it.id, it]));
   const touches = (it, pid) => it.problems === "all" || it.problems.includes(pid);

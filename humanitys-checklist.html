@@ -593,13 +593,13 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
           <p>Item one is the story we tell ourselves. Sharing this page is how it starts to change.</p>
           <div class="copy-row">
             <button class="btn" id="copy-link" type="button">Copy link</button>
-            <span class="copy-val" id="link-val">humanityschecklist.com</span>
+            <span class="copy-val" id="link-val">humanityschecklist.org</span>
           </div>
         </article>
       </div>
       <div class="contact">
         <span class="contact-label">Get in touch</span>
-        <a class="contact-mail" id="mail-link" href="mailto:hello@humanityschecklist.com">hello@humanityschecklist.com</a>
+        <a class="contact-mail" id="mail-link" href="mailto:hello@humanityschecklist.org">hello@humanityschecklist.org</a>
         <button class="btn btn-quiet" id="copy-mail" type="button">Copy address</button>
       </div>
     </div>
@@ -759,8 +759,8 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
     ["distrust", "Distrust"], ["polarization", "Polarization"], ["misinformation", "Misinformation"],
     ["loneliness", "Loneliness"], ["mental", "Mental health"], ["addiction", "Addiction"]
   ].map(([id, label]) => ({ id, label }));
-  const CONTACT = "hello@humanityschecklist.com";
-  const SITE = "https://humanityschecklist.com";
+  const CONTACT = "hello@humanityschecklist.org";
+  const SITE = "https://humanityschecklist.org";
 
   const byId = Object.fromEntries(ITEMS.map(it => [it.id, it]));
   const touches = (it, pid) => it.problems === "all" || it.problems.includes(pid);
