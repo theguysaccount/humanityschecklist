@@ -325,13 +325,13 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
 .sw.is-bloom { background: var(--bloom); }
 
 .join-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
-@media (min-width: 860px) { .join-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 760px) { .join-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .join-card { display: grid; gap: 10px; align-content: start; padding: 22px; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; }
 .join-card p { color: var(--ink-2); }
 .copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 6px; }
 .copy-val { font: 500 .85rem/1.3 var(--font-mono); color: var(--ink-2); user-select: all; }
 .btn {
-  display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; cursor: pointer;
+  display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; cursor: pointer; text-decoration: none;
   border: 1.5px solid var(--ink); background: var(--ink); color: var(--on-ink);
   font: 600 .75rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase;
   transition: background .2s ease, border-color .2s ease, color .2s ease;
@@ -350,6 +350,9 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
 }
 
 .site-foot { border-top: 1px solid var(--rule); }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.foot-links a { color: var(--ink-2); text-underline-offset: 3px; }
+.foot-links a:hover { color: var(--ink); }
 .foot-row {
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 22px;
   font: 500 .75rem/1.4 var(--font-mono); letter-spacing: .06em; color: var(--ink-2);
@@ -460,6 +463,7 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
       <a href="#list">The list</a>
       <a href="#why">Why</a>
       <a href="#math">The math</a>
+      <a href="https://humanityschecklist.org/questions/">Questions</a>
       <a class="nav-join" href="#join">Join</a>
     </nav>
   </div>
@@ -596,6 +600,13 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
             <span class="copy-val" id="link-val">humanityschecklist.org</span>
           </div>
         </article>
+        <article class="join-card">
+          <h3 class="h3">Improve it, or send your agent</h3>
+          <p>This site is open source. Fix a deep dive, answer a new question or sharpen the argument, then open a pull request. AI agents find step-by-step instructions in AGENTS.md.</p>
+          <div class="copy-row">
+            <a class="btn" href="https://github.com/theguysaccount/humanityschecklist">Contribute on GitHub</a>
+          </div>
+        </article>
       </div>
       <div class="contact">
         <span class="contact-label">Get in touch</span>
@@ -609,7 +620,11 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
 <footer class="site-foot">
   <div class="wrap foot-row">
     <span>Humanity's Checklist &middot; Rev. 1 &middot; October 2026</span>
-    <span>Fix the source. Watch the dominoes.</span>
+    <nav class="foot-links" aria-label="More">
+      <a href="https://humanityschecklist.org/questions/">Questions</a>
+      <a href="https://github.com/theguysaccount/humanityschecklist">Open source on GitHub</a>
+      <a href="https://charitology.com">Grew out of Charitology, the study of charity</a>
+    </nav>
   </div>
 </footer>
 
@@ -1083,6 +1098,9 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
   dive.addEventListener("click", e => { if (e.target === dive) dive.close(); });
   dive.addEventListener("close", () => {
     diveId = null;
+    if (byId[location.hash.slice(1)]) {
+      try { history.replaceState(null, "", location.pathname + location.search); } catch (err) { /* sandboxed */ }
+    }
     if (returnFocus && document.contains(returnFocus)) returnFocus.focus({ preventScroll: true });
     returnFocus = null;
   });
@@ -1173,5 +1191,13 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
   $("#copy-mail").addEventListener("click", e => copy(CONTACT, e.currentTarget, $("#mail-link")));
 
   render(null, false);
+
+  // Links like /#status open that item's deep dive (used by the Questions page).
+  const openFromHash = () => {
+    const id = location.hash.slice(1);
+    if (byId[id] && diveId !== id) openDive(id, document.getElementById("list"));
+  };
+  window.addEventListener("hashchange", openFromHash);
+  openFromHash();
 })();
 </script>

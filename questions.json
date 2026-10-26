@@ -1,0 +1,231 @@
+{
+  "groups": [
+    {
+      "title": "The big idea",
+      "items": [
+        {
+          "id": "what-is-humanitys-checklist",
+          "q": "What is Humanity's Checklist?",
+          "a": "Humanity's Checklist is a short list of six root causes that sit upstream of every world problem: the story we tell ourselves, how we coordinate, whether we can see the future, what our feeds reward, what we admire, and who gets to build. Fix those sources and the problems below them start to fix themselves.",
+          "item": "story"
+        },
+        {
+          "id": "root-causes-of-world-problems",
+          "q": "What are the root causes of the world's problems?",
+          "a": "Climate change, war, poverty, loneliness and polarization look like separate problems, but they grow from the same few roots. We tell ourselves a story of decline, we fail to coordinate, we can't picture a shared future, our social feeds reward fear, status is tied to money, and a handful of gatekeepers decide what gets built. Those six roots are the checklist."
+        },
+        {
+          "id": "why-not-solve-problems-one-at-a-time",
+          "q": "Why can't we solve world problems one at a time?",
+          "a": "Treating each problem on its own is like putting Band-Aids on an infection. The symptom gets a little better, the source keeps producing new symptoms, and the budget never ends. Working on the sources changes the conditions that create the problems in the first place."
+        },
+        {
+          "id": "one-problem-behind-all-problems",
+          "q": "Is there one problem behind all other problems?",
+          "a": "The closest thing to one root is the story humanity tells about itself, which is why it sits at the top of the triangle. Just below it is coordination: almost every major problem already has people and resources able to solve it, but they can't find each other or agree on where to go.",
+          "item": "story"
+        },
+        {
+          "id": "what-would-it-take-to-solve-every-problem",
+          "q": "What would it take to solve every problem in the world?",
+          "a": "Not more money spread across more symptoms. It would take changing the few systems every problem runs through: our shared story, our ability to coordinate and picture the future, our attention, our status games, and who gets to create. Humanity's Checklist argues that a focused effort on those six could tip everything below them."
+        },
+        {
+          "id": "highest-leverage-way-to-change-the-world",
+          "q": "What is the highest-leverage way to change the world?",
+          "a": "Systems thinker Donella Meadows ranked the places to intervene in a system and put a society's paradigm, the shared story about how things work, near the very top. Humanity's Checklist follows the same logic: the higher an item sits in the triangle, the more of the world it changes."
+        },
+        {
+          "id": "systems-thinking-world-problems",
+          "q": "How does systems thinking apply to world problems?",
+          "a": "Systems thinking looks for the feedback loops that keep producing a result, rather than the result itself. The checklist applies that lens to humanity as a whole and names six loops, from the story we tell to who gets to build, that keep generating crises."
+        },
+        {
+          "id": "what-is-the-metacrisis",
+          "q": "What is the metacrisis, and how does this relate?",
+          "a": "The metacrisis is the idea that today's crises share common drivers and can't be solved separately. Humanity's Checklist is a practical answer to it: a short list of those drivers, each paired with one buildable project that turns it from a source of harm into a source of repair."
+        }
+      ]
+    },
+    {
+      "title": "Charity and effective altruism",
+      "items": [
+        {
+          "id": "does-charity-work",
+          "q": "Why hasn't charity solved world problems?",
+          "a": "Hundreds of billions of dollars go to charity every year, more than $500 billion in the US alone. Most of it treats symptoms. That work relieves real suffering, but it rarely changes the systems that create the suffering, so the need comes back year after year."
+        },
+        {
+          "id": "systemic-change-vs-charity",
+          "q": "What is the difference between charity and systemic change?",
+          "a": "Charity treats the person or place in front of it. Systemic change alters the rules, incentives and stories that decide how many people end up in need. The world does not have a charity problem. It has a coordination, vision and status problem."
+        },
+        {
+          "id": "systemic-effective-altruism",
+          "q": "What is systemic effective altruism?",
+          "a": "Effective altruism asks how to do the most good with each dollar. Systemic effective altruism adds that the biggest returns come from changing the systems that generate problems, not from buying more relief inside them. Our view is short: the only effective altruism is systemic."
+        },
+        {
+          "id": "critique-of-effective-altruism",
+          "q": "What is the main critique of effective altruism?",
+          "a": "A common critique is that measuring cost per life saved favors measurable relief over harder-to-measure system change. Humanity's Checklist agrees that relief matters, and argues that the highest-impact giving goes to the root causes that keep creating the need for relief."
+        },
+        {
+          "id": "most-effective-charity",
+          "q": "What is the most effective way to donate to change the world?",
+          "a": "Fund the sources rather than the symptoms. A dollar that improves how billions of people coordinate, imagine the future or spend their attention reaches every problem downstream of those systems. That is why the whole checklist is pitched as a single, focused $5 million effort."
+        },
+        {
+          "id": "what-could-5-million-change",
+          "q": "What if $5 million was all it took?",
+          "a": "That is the question this project asks. Five million dollars is less than nine minutes of what the world spends on designer goods. Aimed precisely at the six sources on the checklist, we believe it could start a domino effect that charity budgets thousands of times larger have not."
+        },
+        {
+          "id": "how-much-is-given-to-charity",
+          "q": "How much money goes to charity every year?",
+          "a": "Hundreds of billions of dollars. In the United States alone, individuals, foundations, bequests and companies give more than $500 billion a year. The resources exist; the question is where they are aimed."
+        },
+        {
+          "id": "root-cause-philanthropy",
+          "q": "How do I give to root causes instead of symptoms?",
+          "a": "Look for projects that change how people decide, connect, see the future or award status, and that would make many other problems easier at once. Each item on the checklist names one such project, called a beachhead, that you can fund or help build."
+        },
+        {
+          "id": "what-is-charitology",
+          "q": "What is charitology?",
+          "a": "Charitology is the study of charity: what giving actually changes, why so much of it treats symptoms, and how to aim it at causes. Humanity's Checklist grew out of that study. Learn more at charitology.com."
+        }
+      ]
+    },
+    {
+      "title": "The story we tell ourselves",
+      "items": [
+        {
+          "id": "why-the-story-matters",
+          "q": "Why does the story humanity tells itself matter?",
+          "a": "People act out the story they believe. If the shared story is that the future is doomed and nobody can change it, people stop trying, and the prediction comes true. A story in which every problem is solvable makes people look for solutions and partners.",
+          "item": "story"
+        },
+        {
+          "id": "what-is-protopia",
+          "q": "What is protopia?",
+          "a": "Protopia, a term coined by writer Kevin Kelly, describes a world that gets a little better every year instead of a perfect utopia or a collapsing dystopia. It is the direction Humanity's Checklist points toward: steady, compounding improvement that we build together.",
+          "item": "story"
+        },
+        {
+          "id": "utopia-vs-dystopia-vs-protopia",
+          "q": "Utopia, dystopia or protopia: which future are we heading for?",
+          "a": "None of them is fixed. Utopia promises perfection and dystopia predicts collapse; both make people passive. Protopia asks what we can make slightly better this year. Which future we get depends largely on which story we act on.",
+          "item": "story"
+        },
+        {
+          "id": "humanity-as-a-superorganism",
+          "q": "Is humanity a superorganism?",
+          "a": "In a useful sense, yes. Eight billion people connected by trade, media and the internet behave like one body with a nervous system, a reward system and an imagination. World problems are its symptoms, and the checklist treats the organs that produce them."
+        }
+      ]
+    },
+    {
+      "title": "Coordination and vision",
+      "items": [
+        {
+          "id": "every-problem-is-a-coordination-problem",
+          "q": "Is every problem a coordination problem?",
+          "a": "Nearly every large problem is. The knowledge, money and people needed to solve climate change or hunger already exist; what fails is getting them to the same place, at the same time, toward the same goal.",
+          "item": "coordination"
+        },
+        {
+          "id": "what-is-a-coordination-problem",
+          "q": "What is a coordination problem?",
+          "a": "A coordination problem happens when everyone would be better off acting together but no one can act alone without losing out. Arms races, overfishing and climate change are classic examples, sometimes described as multipolar traps or Moloch.",
+          "item": "coordination"
+        },
+        {
+          "id": "find-people-who-share-your-vision",
+          "q": "How do I find people who share my vision for the future?",
+          "a": "Today it mostly happens by luck and existing networks. The Social Router on the checklist would change that: an automated LinkedIn for visions of the future that connects you with the people, projects and funding that complete your piece.",
+          "item": "coordination"
+        },
+        {
+          "id": "shared-vision-of-the-future",
+          "q": "How can humanity agree on a shared vision of the future?",
+          "a": "By making visions visible and letting people back the ones they believe in. The Vision Market on the checklist is a market for visions of the future, where the strongest pictures attract people, talent and money until a shared picture becomes a shared plan.",
+          "item": "vision"
+        },
+        {
+          "id": "why-are-visions-of-the-future-dystopian",
+          "q": "Why are most visions of the future dystopian?",
+          "a": "Fear holds attention, so films, news and feeds lean toward collapse. The result is a culture that can describe dozens of ways the world ends and very few ways it gets better. We can't build what we can't see.",
+          "item": "vision"
+        }
+      ]
+    },
+    {
+      "title": "Attention, status and gatekeepers",
+      "items": [
+        {
+          "id": "social-media-nervous-system",
+          "q": "Is social media humanity's nervous system?",
+          "a": "It works like one. Around five billion people use social media, and what it amplifies shapes what everyone feels and does next. Right now it is tuned for outrage because outrage holds attention, which keeps the whole organism anxious and divided.",
+          "item": "attention"
+        },
+        {
+          "id": "what-is-bloomscrolling",
+          "q": "What is bloomscrolling?",
+          "a": "Bloomscrolling is the opposite of doomscrolling: a feed ranked by the value it adds to your life, measured in who you become, not how long you stay. Bloomscroll is the beachhead project for the attention item on the checklist.",
+          "item": "attention"
+        },
+        {
+          "id": "redesign-social-media-for-wellbeing",
+          "q": "How could social media be redesigned for wellbeing?",
+          "a": "Change what the feed optimizes for. Instead of time on site, rank posts by whether they leave people better off and move them from a victim state into a problem-solving state, including showing them problems they can actually help solve.",
+          "item": "attention"
+        },
+        {
+          "id": "status-and-luxury-spending",
+          "q": "How much does the world spend on luxury goods?",
+          "a": "More than $300 billion a year goes to personal designer goods such as handbags, clothing and watches. For a stretch, the richest person on Earth was Bernard Arnault, whose company sells Louis Vuitton, Dior and Tiffany. Status is sold by the bag.",
+          "item": "status"
+        },
+        {
+          "id": "make-giving-a-status-symbol",
+          "q": "Can generosity become a status symbol?",
+          "a": "Status follows culture, and culture can change. Charity designer goods would make the coolest thing you can wear a sign of how much you gave. If even part of luxury spending followed, it would fund the rest of the checklist many times over.",
+          "item": "status"
+        },
+        {
+          "id": "internet-gatekeepers",
+          "q": "Who are the gatekeepers of the internet?",
+          "a": "Platforms, app stores, ranking algorithms and investors decide what gets built online and who gets seen. Because creation runs through these hierarchies, most good ideas never ship.",
+          "item": "gatekeepers"
+        },
+        {
+          "id": "co-creation-collective-intelligence",
+          "q": "How can people co-create online without gatekeepers?",
+          "a": "With shared tools that let anyone imagine, build and launch digital experiences together. The Co-Creator Portal on the checklist moves creation from hierarchy to collective intelligence.",
+          "item": "gatekeepers"
+        }
+      ]
+    },
+    {
+      "title": "Getting involved",
+      "items": [
+        {
+          "id": "how-can-i-help-solve-world-problems",
+          "q": "How can one person help solve world problems?",
+          "a": "Pick a source, not a symptom. Fund the checklist, help build one of its six beachheads, or share the story: the first item on the list is the story we tell ourselves, and telling a better one is something anyone can do today."
+        },
+        {
+          "id": "change-the-world-with-little-money",
+          "q": "Can you change the world with a small amount of money?",
+          "a": "Yes, if it is aimed at leverage. A small sum spent on a system that billions of people pass through can outdo a large sum spent on one symptom. That is the bet behind asking whether $5 million is all it takes."
+        },
+        {
+          "id": "contribute-with-ai-agents",
+          "q": "Can I or my AI agent contribute to Humanity's Checklist?",
+          "a": "Yes. The site is open source on GitHub. Point your agent at the repository; its AGENTS.md file explains how to add questions, improve the deep dives and open a pull request. People can contribute the same way, or open an issue with an idea."
+        }
+      ]
+    }
+  ]
+}
