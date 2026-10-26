@@ -1,0 +1,25 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>icon</title>
+<style>
+  html, body { margin: 0; background: transparent; }
+  svg { display: block; }
+</style>
+<body>
+<script>
+  // ?size=512&radius=0.22&pad=0.2 : the brand mark (a level-one Sierpinski triangle) on a spruce tile.
+  const q = new URLSearchParams(location.search);
+  const size = +q.get("size") || 512, radius = +(q.get("radius") ?? 0.22), pad = +(q.get("pad") ?? 0.2);
+  const w = size * (1 - 2 * pad), h = w * Math.sqrt(3) / 2;
+  const x0 = (size - w) / 2, y0 = (size - h) / 2 + h * 0.02;
+  const p = (fx, fy) => `${(x0 + fx * w).toFixed(2)},${(y0 + fy * h).toFixed(2)}`;
+  document.body.innerHTML = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+    <rect width="${size}" height="${size}" rx="${size * radius}" fill="#0F2621"/>
+    <polygon points="${p(.5, 0)} ${p(.75, .5)} ${p(.25, .5)}" fill="#EE5A82"/>
+    <polygon points="${p(.25, .5)} ${p(.5, 1)} ${p(0, 1)}" fill="#EDF1ED"/>
+    <polygon points="${p(.75, .5)} ${p(1, 1)} ${p(.5, 1)}" fill="#EDF1ED"/>
+  </svg>`;
+  window.svgSource = () => document.querySelector("svg").outerHTML;
+</script>
+</body>

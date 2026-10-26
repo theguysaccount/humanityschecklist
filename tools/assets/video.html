@@ -1,0 +1,106 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>video</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=block">
+<style>
+  :root {
+    --bg: #0B1613; --card: #12201C; --ink: #E2EBE6; --ink-2: #97AAA2; --rule: #283A33;
+    --sym: #263A33; --sym-2: #172621; --bloom: #EE5A82; --bloom-ink: #FF8DA9;
+  }
+  html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; background: var(--bg); color: var(--ink); }
+  .brand { position: absolute; left: 72px; top: 56px; display: flex; align-items: center; gap: 14px; font: 750 30px/1 "Archivo", sans-serif; font-stretch: 80%; }
+  .brand svg { width: 38px; height: 33px; }
+  .title { position: absolute; left: 72px; top: 128px; width: 560px; font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 70%; font-size: 66px; line-height: .96; }
+  .list { position: absolute; left: 72px; top: 336px; width: 520px; margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+  .list li { display: flex; align-items: center; gap: 14px; font: 600 21px/1 "IBM Plex Mono", monospace; letter-spacing: .05em; }
+  .box { width: 22px; height: 22px; border: 2.5px solid var(--ink); border-radius: 4px; box-sizing: border-box; flex: none; display: grid; place-items: center; }
+  .box svg { width: 15px; height: 15px; }
+  .n { color: var(--ink-2); width: 16px; font-weight: 500; }
+  .dots { flex: 1; border-bottom: 2.5px dotted var(--rule); transform: translateY(-5px); }
+  .act { color: var(--bloom-ink); }
+  .end { position: absolute; left: 72px; right: 72px; bottom: 0; height: 84px; display: flex; align-items: center; justify-content: space-between; border-top: 1.5px solid var(--rule); }
+  .end .q { font: 400 italic 28px/1 "Newsreader", serif; color: var(--ink); }
+  .end .d { font: 600 24px/1 "IBM Plex Mono", monospace; color: var(--bloom-ink); }
+  .art { position: absolute; right: 64px; top: 60px; width: 560px; }
+  .art svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .conn { fill: var(--sym-2); } .conn-glow { fill: var(--bloom); }
+  .tile-shape { stroke-width: 1.6; }
+  .tile-name { font-family: "Archivo", sans-serif; font-weight: 750; font-stretch: 62%; text-anchor: middle; }
+  .ripple { fill: none; stroke: var(--bloom); }
+</style>
+<body>
+<div class="brand" id="brand">
+  <svg viewBox="0 0 24 21"><polygon points="12,0 18,10.39 6,10.39" fill="#EE5A82"/><polygon points="6,10.39 12,20.78 0,20.78" fill="#E2EBE6"/><polygon points="18,10.39 24,20.78 12,20.78" fill="#E2EBE6"/></svg>
+  <span>Humanity's Checklist</span>
+</div>
+<div class="title" id="title">Six things to fix so we can fix everything else.</div>
+<ol class="list" id="list"></ol>
+<div class="art"><svg id="tri"></svg></div>
+<div class="end" id="end"><span class="q">What if $5 million was all it took?</span><span class="d">humanityschecklist.org</span></div>
+<script src="triangle.js"></script>
+<script>
+  const C = { card: "#12201C", ink: "#E2EBE6", onInk: "#0B1613", sym: "#263A33", bloom: "#EE5A82", onBloom: "#1B0A10", rule: "#283A33" };
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const mix = (a, b, p) => { const x = hex(a), y = hex(b); return "rgb(" + x.map((v, i) => Math.round(v + (y[i] - v) * p)).join(",") + ")"; };
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const ease = p => 1 - Math.pow(1 - clamp(p), 3);
+
+  const t = TRI.draw(document.getElementById("tri"), { tileFont: 21 });
+  const clip = t.el("clipPath", { id: "tri-clip" }, t.el("defs", {}, t.svg));
+  t.el("polygon", { points: "300,-4 -6,524 606,524" }, clip);
+  t.fx.setAttribute("clip-path", "url(#tri-clip)");
+  const CHECK = TRI.ITEMS.map((_, i) => 1.6 + i * 0.72);
+  const byId = Object.fromEntries(t.tiles.map((tile, i) => [tile.id, i]));
+  t.mo.forEach(m => {
+    const item = Math.min(5, Math.floor(m.rank * 6));
+    const c = t.tiles[item].c;
+    m.at = CHECK[item] + 0.12 + Math.hypot(m.c[0] - c[0], m.c[1] - c[1]) / 900;
+  });
+  const ripples = t.tiles.map(tile => t.el("circle", { class: "ripple", cx: tile.c[0], cy: tile.c[1], r: 0 }, t.fx));
+  const list = document.getElementById("list");
+  const rows = TRI.ITEMS.map((it, i) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="box"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#1B0A10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="n">${i + 1}</span><span class="src">${it.name.toUpperCase()}</span><span class="dots"></span><span class="act">${it.act.toUpperCase()}</span>`;
+    list.append(li);
+    return li;
+  });
+  const nb = [["story", "coordination", "vision"], ["coordination", "attention", "status"], ["vision", "status", "gatekeepers"]];
+  const fade = (el, p, dy = 14) => { el.style.opacity = ease(p); el.style.transform = `translateY(${(1 - ease(p)) * dy}px)`; };
+
+  window.renderFrame = time => {
+    fade(document.getElementById("brand"), time / 0.4, 0);
+    fade(document.getElementById("title"), (time - 0.1) / 0.6);
+    t.tiles.forEach((tile, i) => {
+      const appear = ease((time - 0.2 - i * 0.1) / 0.35);
+      const on = ease((time - CHECK[i]) / 0.25);
+      const base = tile.r === 0 ? C.ink : C.card;
+      tile.g.style.opacity = appear;
+      tile.shape.setAttribute("fill", mix(base, C.bloom, on));
+      tile.shape.setAttribute("stroke", mix(C.ink, C.bloom, on));
+      tile.g.querySelector("text").setAttribute("fill", mix(tile.r === 0 ? C.onInk : C.ink, C.onBloom, on));
+      const rp = (time - CHECK[i]) / 1.3;
+      const r = ripples[i];
+      r.setAttribute("r", rp > 0 && rp < 1 ? (ease(rp) * 650).toFixed(1) : 0);
+      r.setAttribute("stroke-opacity", rp > 0 && rp < 1 ? (0.8 * (1 - rp)).toFixed(3) : 0);
+      r.setAttribute("stroke-width", 3);
+      const row = rows[i], box = row.querySelector(".box");
+      fade(row, (time - 0.7 - i * 0.08) / 0.4, 10);
+      box.style.background = mix(C.card, C.bloom, on);
+      box.style.borderColor = mix(C.ink, C.bloom, on);
+      box.querySelector("svg").style.opacity = on;
+      row.querySelector(".src").style.color = mix(C.ink, "#FF8DA9", on);
+    });
+    const moIn = ease((time - 0.6) / 0.5);
+    t.mo.forEach(m => {
+      m.el.setAttribute("fill", mix(C.sym, C.bloom, ease((time - m.at) / 0.2)));
+      m.el.style.opacity = moIn;
+    });
+    t.conns.forEach((g, i) => {
+      const f = nb[i].reduce((s, id) => s + ease((time - CHECK[byId[id]]) / 0.4), 0) / 3;
+      g.setAttribute("opacity", f.toFixed(3));
+    });
+    fade(document.getElementById("end"), (time - 6.0) / 0.6, 10);
+  };
+  window.ready = document.fonts.ready.then(() => { renderFrame(0); return document.fonts.check('800 40px "Archivo"'); });
+</script>
+</body>

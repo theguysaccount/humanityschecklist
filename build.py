@@ -19,6 +19,7 @@ import html
 import json
 import pathlib
 import re
+import shutil
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -39,13 +40,14 @@ ITEM_NAMES = {
     "attention": "Attention", "status": "Status", "gatekeepers": "Gatekeepers",
 }
 
-FAVICON = (
-    "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -4.6 30 30'>"
-    "<rect x='-3' y='-4.6' width='30' height='30' rx='7' fill='%23EDF1ED'/>"
-    "<polygon points='12,0 18,10.39 6,10.39' fill='%23D23560'/>"
-    "<polygon points='6,10.39 12,20.78 0,20.78' fill='%230F2621'/>"
-    "<polygon points='18,10.39 24,20.78 12,20.78' fill='%230F2621'/></svg>"
-)
+STATIC = ROOT / "static"   # favicons, share cards and the video, rendered by tools/render.py
+VIDEO = {
+    "url": f"{SITE}/og/humanitys-checklist.mp4",
+    "poster": f"{SITE}/og/video-poster.png",
+    "title": "Humanity's Checklist in eight seconds",
+    "description": "Six sources sit upstream of every world problem. Tick each one off and watch everything downstream bloom.",
+    "width": 1280, "height": 720, "seconds": 8,
+}
 
 
 def esc(text):
@@ -172,8 +174,22 @@ def load_posts():
 
 # ---------- Shared page parts ----------
 
-def head(title, description, path, json_ld, og_type="website", extra=""):
+def card_url(image):
+    """The share card for a page, falling back to the home card if it has not been rendered yet."""
+    name = image if (STATIC / "og" / f"{image}.png").exists() else "home"
+    return f"{SITE}/og/{name}.png"
+
+
+def head(title, description, path, json_ld, og_type="website", extra="", image="home", video=False):
     url = SITE + path
+    card = card_url(image)
+    alt = esc(f"{title}: the Humanity's Checklist triangle of six sources above every world problem.")
+    video_tags = f"""<meta property="og:video" content="{VIDEO['url']}">
+<meta property="og:video:secure_url" content="{VIDEO['url']}">
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="{VIDEO['width']}">
+<meta property="og:video:height" content="{VIDEO['height']}">
+""" if video else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -181,18 +197,32 @@ def head(title, description, path, json_ld, og_type="website", extra=""):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Humanity's Checklist">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="Humanity's Checklist">
+<meta property="og:locale" content="en_US">
 <meta property="og:url" content="{url}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{card}">
+<meta property="og:image:secure_url" content="{card}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{alt}">
+{video_tags}<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(description)}">
+<meta name="twitter:image" content="{card}">
+<meta name="twitter:image:alt" content="{alt}">
 <meta name="theme-color" content="#EDF1ED" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0B1613" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/svg+xml" href="{FAVICON}">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="text/plain" title="Summary for AI agents" href="{SITE}/llms.txt">
 <link rel="alternate" type="application/rss+xml" title="Humanity's Checklist blog" href="{SITE}/blog/feed.xml">
 {extra}<script type="application/ld+json">{json.dumps(json_ld, ensure_ascii=False)}</script>
@@ -321,8 +351,8 @@ PAGE_CSS = """
 """
 
 
-def shell(page_head, title, description, path, json_ld, current, main_html, og_type="website", extra=""):
-    return (head(title, description, path, json_ld, og_type, extra) + page_head + PAGE_CSS
+def shell(page_head, title, description, path, json_ld, current, main_html, og_type="website", extra="", image="home"):
+    return (head(title, description, path, json_ld, og_type, extra, image) + page_head + PAGE_CSS
             + "</head>\n<body>\n" + site_header(current) + main_html + site_footer() + "</body>\n</html>\n")
 
 
@@ -357,15 +387,22 @@ def build_index(page_head, page_body):
         "@graph": [
             {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Humanity's Checklist",
              "description": description, "inLanguage": "en", "publisher": ORG},
+            {**ORG, "@id": SITE + "/#organization", "logo": SITE + "/icon-512.png",
+             "sameAs": [REPO, "https://charitology.com", "https://redefinestatus.com"]},
+            {"@type": "VideoObject", "name": VIDEO["title"], "description": VIDEO["description"],
+             "thumbnailUrl": [VIDEO["poster"], SITE + "/og/home.png"], "contentUrl": VIDEO["url"],
+             "uploadDate": "2026-10-26", "duration": f"PT{VIDEO['seconds']}S", "width": VIDEO["width"],
+             "height": VIDEO["height"], "publisher": ORG},
             {"@type": "WebPage", "url": SITE + "/",
              "name": "Humanity's Checklist: six things to fix so we can fix everything else",
              "isPartOf": {"@id": SITE + "/#website"},
              "about": ["Systemic change", "Effective altruism", "Root causes of world problems",
                        "Coordination problems", "Protopia", "Philanthropy"],
-             "isBasedOn": "https://charitology.com"},
+             "isBasedOn": "https://charitology.com", "primaryImageOfPage": SITE + "/og/home.png",
+             "video": {"@type": "VideoObject", "contentUrl": VIDEO["url"], "name": VIDEO["title"]}},
         ],
     }
-    doc = head("Humanity's Checklist", description, "/", json_ld) + page_head
+    doc = head("Humanity's Checklist", description, "/", json_ld, image="home", video=True) + page_head
     doc += "\n</head>\n<body>" + page_body + "\n</body>\n</html>\n"
     write("/", doc)
 
@@ -428,7 +465,7 @@ def build_questions(page_head, groups, posts_by_slug):
 </main>
 """)
     write("/questions/", shell(page_head, "Questions | Humanity's Checklist", description, "/questions/",
-                               json_ld, "/questions/", "".join(parts)))
+                               json_ld, "/questions/", "".join(parts), image="questions"))
     return all_items
 
 
@@ -449,6 +486,7 @@ def article_page(page_head, doc, path, kind, posts_by_slug):
         "publisher": ORG,
         "isPartOf": {"@id": SITE + "/#website"},
         "keywords": doc["keywords"],
+        "image": card_url("whitepaper" if kind == "Whitepaper" else f"blog-{doc['slug']}"),
     }
     if kind == "Whitepaper":
         json_ld["genre"] = "Whitepaper"
@@ -517,7 +555,8 @@ def article_page(page_head, doc, path, kind, posts_by_slug):
     title = f'{doc["title"]} | Humanity\'s Checklist'
     extra = f'<meta property="article:published_time" content="{doc["date"]}">\n'
     write(path, shell(page_head, title, doc["description"], path, json_ld,
-                      "/whitepaper/" if kind == "Whitepaper" else "/blog/", main_html, "article", extra))
+                      "/whitepaper/" if kind == "Whitepaper" else "/blog/", main_html, "article", extra,
+                      "whitepaper" if kind == "Whitepaper" else f"blog-{doc['slug']}"))
 
 
 def build_blog_index(page_head, posts, whitepaper):
@@ -561,7 +600,8 @@ def build_blog_index(page_head, posts, whitepaper):
   </section>
 </main>
 """
-    write("/blog/", shell(page_head, "Blog | Humanity's Checklist", description, "/blog/", json_ld, "/blog/", main_html))
+    write("/blog/", shell(page_head, "Blog | Humanity's Checklist", description, "/blog/", json_ld, "/blog/", main_html,
+                          image="blog"))
 
 
 def build_feed(posts):
@@ -586,24 +626,85 @@ def build_feed(posts):
 """)
 
 
+def build_404(page_head):
+    main_html = """<main>
+  <section class="page-hero" aria-labelledby="nf-title">
+    <div class="wrap narrow">
+      <p class="eyebrow">404</p>
+      <h1 class="display-1" id="nf-title">This page isn't on the checklist</h1>
+      <p class="lead">The link may be old or mistyped. Everything on the site starts from the checklist.</p>
+      <p><a class="btn" href="/">Open the checklist</a></p>
+      <p class="meta-line"><a href="/whitepaper/">Whitepaper</a><a href="/blog/">Blog</a><a href="/questions/">Questions</a></p>
+    </div>
+  </section>
+</main>
+"""
+    doc = shell(page_head, "Page not found | Humanity's Checklist", "This page could not be found.", "/404.html",
+                {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found"}, "", main_html)
+    (OUT / "404.html").write_text(doc.replace(
+        '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
+        '<meta name="robots" content="noindex">'))
+
+
 def page_paths(posts):
     return ["/", "/whitepaper/", "/blog/"] + [f"/blog/{p['slug']}/" for p in posts] + ["/questions/"]
 
 
 def build_meta_files(all_items, whitepaper, posts):
     (OUT / "CNAME").write_text(DOMAIN + "\n")
+    ai_crawlers = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+                   "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot",
+                   "Meta-ExternalAgent", "Amazonbot", "DuckAssistBot", "MistralAI-User", "cohere-ai"]
     (OUT / "robots.txt").write_text(
-        "# Search engines and AI crawlers are welcome to read and cite everything here.\n"
-        f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+        "# Humanity's Checklist: search engines and AI crawlers are welcome to read, index and cite everything.\n"
+        f"# Summaries written for language models: {SITE}/llms.txt and {SITE}/llms-full.txt\n\n"
+        "User-agent: *\nAllow: /\n\n"
+        + "".join(f"User-agent: {bot}\n" for bot in ai_crawlers) + "Allow: /\n\n"
+        f"Sitemap: {SITE}/sitemap.xml\n")
     dates = {f"/blog/{p['slug']}/": p.get("updated", p["date"]) for p in posts}
     dates["/whitepaper/"] = whitepaper.get("updated", whitepaper["date"])
-    urls = "\n".join(f"  <url><loc>{SITE}{p}</loc><lastmod>{dates.get(p, TODAY)}</lastmod></url>"
-                     for p in page_paths(posts))
+    def card_for(path):
+        if path == "/":
+            return "home"
+        if path.startswith("/blog/") and path != "/blog/":
+            return "blog-" + path.split("/")[2]
+        return path.strip("/")
+
+    def entry(path):
+        extra = f"\n    <image:image><image:loc>{card_url(card_for(path))}</image:loc></image:image>"
+        if path == "/":
+            extra += f"""
+    <video:video>
+      <video:thumbnail_loc>{VIDEO['poster']}</video:thumbnail_loc>
+      <video:title>{esc(VIDEO['title'])}</video:title>
+      <video:description>{esc(VIDEO['description'])}</video:description>
+      <video:content_loc>{VIDEO['url']}</video:content_loc>
+      <video:duration>{VIDEO['seconds']}</video:duration>
+    </video:video>"""
+        return f"  <url>\n    <loc>{SITE}{path}</loc>\n    <lastmod>{dates.get(path, TODAY)}</lastmod>{extra}\n  </url>"
+
+    urls = "\n".join(entry(p) for p in page_paths(posts))
     (OUT / "sitemap.xml").write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 {urls}
 </urlset>
 """)
+    (OUT / "site.webmanifest").write_text(json.dumps({
+        "name": "Humanity's Checklist",
+        "short_name": "Checklist",
+        "description": "Six things to fix so we can fix everything else.",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#0B1613",
+        "theme_color": "#0F2621",
+        "icons": [
+            {"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"},
+            {"src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+        ],
+    }, indent=2) + "\n")
     (OUT / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY)
     questions = "\n".join(f"- [{i['q']}]({SITE}/questions/#{i['id']})" for i in all_items)
     post_lines = "\n".join(f"- [{p['title']}]({SITE}/blog/{p['slug']}/): {p['description']}" for p in posts)
@@ -681,6 +782,8 @@ def main():
     posts = load_posts()
     posts_by_slug = {p["slug"]: p for p in posts}
     OUT.mkdir(exist_ok=True)
+    if STATIC.exists():
+        shutil.copytree(STATIC, OUT, dirs_exist_ok=True)
     page_head, page_body = split_page(source)
     build_index(page_head, page_body)
     all_items = build_questions(page_head, groups, posts_by_slug)
@@ -689,6 +792,7 @@ def main():
         article_page(page_head, p, f"/blog/{p['slug']}/", "Blog", posts_by_slug)
     build_blog_index(page_head, posts, whitepaper)
     build_feed(posts)
+    build_404(page_head)
     build_meta_files(all_items, whitepaper, posts)
     print(f"Built docs/: whitepaper, {len(posts)} posts, {len(all_items)} questions")
 

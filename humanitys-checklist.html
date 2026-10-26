@@ -223,6 +223,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--bloom); outline
   padding: 9px 46px 9px calc(16px + 22px + 12px + 1.2em + 12px);
   font: 500 .66rem/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2);
 }
+.cl-static { display: grid; gap: 10px; padding: 14px 16px; list-style: none; }
 .cl-row { display: flex; align-items: center; gap: 12px; padding-left: 16px; border-top: 1px solid var(--rule); transition: background .2s ease; }
 .cl-row.is-hot { background: var(--sym-2); }
 .cl-box { display: grid; place-items: center; padding-block: 16px; cursor: pointer; }
@@ -504,6 +505,16 @@ input:focus-visible + .box-ui { outline: 3px solid var(--bloom); outline-offset:
         </header>
         <div class="cl-cols" aria-hidden="true"><span>Source</span><span>Action</span></div>
         <ol class="cl-list" id="cl-list"></ol>
+        <noscript>
+          <ol class="cl-static">
+            <li><strong>1. Story: Rewrite.</strong> The story we tell ourselves sets what we think is possible. Beachhead: a new story of protopia.</li>
+            <li><strong>2. Coordination: Route.</strong> Every problem is a coordination problem. Beachhead: the Social Router, an automated LinkedIn for visions of the future.</li>
+            <li><strong>3. Vision: Preview.</strong> We can't build a future we can't see. Beachhead: the Vision Market, a market for visions of the future.</li>
+            <li><strong>4. Attention: Bloom.</strong> Social media is our nervous system, and it's wired for fear. Beachhead: Bloomscroll, a feed ranked for the value it adds.</li>
+            <li><strong>5. Status: Give.</strong> Status has turned into the worship of money. Beachhead: charity designer goods, where the coolest thing you can wear shows how much you gave.</li>
+            <li><strong>6. Gatekeepers: Open.</strong> A few gatekeepers decide what gets built. Beachhead: the Co-Creator Portal.</li>
+          </ol>
+        </noscript>
         <footer class="cl-foot">
           <p class="cl-status" id="cl-status" aria-live="polite">Tick a box to imagine it done.</p>
           <button class="text-btn" id="cl-reset" type="button" hidden>Reset</button>

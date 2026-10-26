@@ -15,6 +15,8 @@ Humanity's Checklist argues that every world problem grows from six sources, dra
 | `content/whitepaper.md` | The whitepaper (`/whitepaper/`): the philosophy and method. |
 | `content/blog/*.md` | Blog posts (`/blog/<file name>/`): long-tail essays that each answer one search and lead to the checklist. |
 | `build.py` | Builds everything into `docs/` (Python standard library only), including the sitemap, RSS feed, `llms.txt` and `llms-full.txt`. |
+| `static/` | Favicons, share cards (`static/og/*.png`) and the og:video, copied into the site as-is. |
+| `tools/render.py` | Re-renders `static/` with headless Google Chrome (and Swift for the video). Run `python3 tools/render.py cards` after adding a post so it gets its own share card; without one, the post uses the home card. |
 | `docs/` | Build output. Not committed; GitHub Actions builds and deploys it on every push to `main`. |
 
 ## Common changes

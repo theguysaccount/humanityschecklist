@@ -1,0 +1,67 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>card</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=block">
+<style>
+  :root {
+    --bg: #0B1613; --card: #12201C; --ink: #E2EBE6; --ink-2: #97AAA2; --rule: #283A33;
+    --sym: #263A33; --sym-2: #172621; --bloom: #EE5A82; --bloom-ink: #FF8DA9; --on-bloom: #1B0A10; --on-ink: #0B1613;
+  }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: var(--bg); color: var(--ink); }
+  .frame { position: relative; width: 1200px; height: 630px; box-sizing: border-box; padding: 56px 64px 0; }
+  .brand { display: flex; align-items: center; gap: 14px; font: 750 30px/1 "Archivo", sans-serif; font-stretch: 80%; }
+  .brand svg { width: 38px; height: 33px; }
+  .left { position: absolute; left: 64px; top: 150px; width: 610px; display: grid; gap: 18px; }
+  .kicker { font: 600 18px/1 "IBM Plex Mono", monospace; letter-spacing: .18em; text-transform: uppercase; color: var(--bloom-ink); }
+  .title { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 70%; line-height: .96; letter-spacing: -.005em; max-height: 252px; overflow: hidden; }
+  .sub { font: 400 25px/1.35 "Newsreader", serif; color: var(--ink-2); max-height: 68px; overflow: hidden; }
+  .art { position: absolute; right: 54px; top: 74px; width: 476px; }
+  .art svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .foot { position: absolute; left: 64px; right: 64px; bottom: 0; height: 74px; display: flex; align-items: center; justify-content: space-between; border-top: 1.5px solid var(--rule); font: 500 20px/1 "IBM Plex Mono", monospace; color: var(--ink-2); }
+  .foot b { color: var(--ink); font-weight: 600; }
+  .mo { fill: var(--sym); } .mo.on { fill: var(--bloom); }
+  .conn { fill: var(--sym-2); } .conn-glow { fill: var(--bloom); }
+  .tile-shape { fill: var(--card); stroke: var(--ink); stroke-width: 1.6; }
+  .tile.is-apex .tile-shape { fill: var(--ink); }
+  .tile-name { font-family: "Archivo", sans-serif; font-weight: 750; font-stretch: 62%; fill: var(--ink); text-anchor: middle; }
+  .tile.is-apex .tile-name { fill: var(--on-ink); }
+  .tile.on .tile-shape { fill: var(--bloom); stroke: var(--bloom); }
+  .tile.on .tile-name { fill: var(--on-bloom); }
+</style>
+<body>
+<div class="frame">
+  <div class="brand">
+    <svg viewBox="0 0 24 21"><polygon points="12,0 18,10.39 6,10.39" fill="#EE5A82"/><polygon points="6,10.39 12,20.78 0,20.78" fill="#E2EBE6"/><polygon points="18,10.39 24,20.78 12,20.78" fill="#E2EBE6"/></svg>
+    <span>Humanity's Checklist</span>
+  </div>
+  <div class="left">
+    <div class="kicker" id="kicker"></div>
+    <div class="title" id="title"></div>
+    <div class="sub" id="sub"></div>
+  </div>
+  <div class="art"><svg id="tri"></svg></div>
+  <div class="foot"><b>humanityschecklist.org</b><span>The only effective altruism is systemic.</span></div>
+</div>
+<script src="triangle.js"></script>
+<script>
+  // ?kicker=&title=&sub=&bloom=story,status&heal=0.4
+  const q = new URLSearchParams(location.search);
+  document.getElementById("kicker").textContent = q.get("kicker") || "";
+  const title = document.getElementById("title");
+  title.textContent = q.get("title") || "Six things to fix so we can fix everything else.";
+  document.getElementById("sub").textContent = q.get("sub") || "";
+  const bloom = new Set((q.get("bloom") || "story").split(",").filter(Boolean));
+  const heal = +(q.get("heal") ?? 0.35);
+  const t = TRI.draw(document.getElementById("tri"), { tileFont: 21 });
+  t.tiles.forEach(tile => tile.g.classList.toggle("on", bloom.has(tile.id)));
+  t.mo.forEach(m => m.el.classList.toggle("on", m.rank < heal));
+  const nb = [["story", "coordination", "vision"], ["coordination", "attention", "status"], ["vision", "status", "gatekeepers"]];
+  t.conns.forEach((c, i) => c.setAttribute("opacity", nb[i].filter(id => bloom.has(id)).length / 3));
+  window.ready = document.fonts.ready.then(() => {
+    let size = 88;
+    title.style.fontSize = size + "px";
+    while (title.scrollHeight > 252 && size > 44) { size -= 2; title.style.fontSize = size + "px"; }
+    return document.fonts.check('800 40px "Archivo"');
+  });
+</script>
+</body>
