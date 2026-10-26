@@ -3,11 +3,11 @@ title: "What Is Charitology? The Study of Charity"
 description: Charitology is the study of charity: what giving actually changes, for whom, for how long and through which systems. What it asks, what it borrows from philanthropy research and behavioral science, and how Humanity's Checklist grew out of it.
 date: 2026-10-25
 order: 12
-related: why-charity-hasnt-solved-world-problems, effective-altruism-vs-humanitys-checklist, giving-as-the-new-status-symbol
+related: charitology-the-missing-science-of-charity, systemic-altruism, why-charity-hasnt-solved-world-problems
 keywords: charitology, what is charitology, study of charity, science of giving, philanthropy studies, psychology of giving, how charity works
 ---
 
-Charity is one of the oldest human institutions and one of the least examined. Most people give, many give regularly, and very few ask what their giving actually changes. **Charitology** is the study of that question.
+Charity is one of the oldest human institutions and one of the least examined. It does not even have a widely used name for its science, a gap explored in [Charitology: The Surprising Lack of a Name for the Science of Charity](/blog/charitology-the-missing-science-of-charity/). Most people give, many give regularly, and very few ask what their giving actually changes. **Charitology** is the study of that question.
 
 Humanity's Checklist grew out of it.
 
@@ -48,4 +48,4 @@ From that view come four principles, which Humanity's Checklist adopts:
 
 Apply those principles to the whole world and you get Humanity's Checklist. It names six sources that sit upstream of every world problem: the story we tell ourselves, coordination, vision, attention, status and gatekeepers. It pairs each with one buildable project and asks whether $5 million, spent at the source, could do more than budgets far larger spent on symptoms.
 
-The world does not have a charity problem. It has a coordination, vision and status problem. Charitology is how we found that out. Learn more at [charitology.com](https://charitology.com).
+The world does not have a charity problem. It has a coordination, vision and status problem. Charitology is how we found that out, and [systemic altruism](/blog/systemic-altruism/) is the practice that follows from it. Learn more at [charitology.com](https://charitology.com).

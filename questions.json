@@ -34,6 +34,12 @@
           "read": "root-causes-of-world-problems"
         },
         {
+          "id": "how-much-would-it-cost-to-save-humanity",
+          "q": "How much would it cost to save humanity?",
+          "a": "In new money, close to nothing. The world already spends more than $300 billion a year on designer goods, more than $500 billion on US charity and around $1 trillion on advertising. The question is not how much it costs but which platforms redirect what already flows.",
+          "read": "the-cost-to-save-humanity-is-zero"
+        },
+        {
           "id": "highest-leverage-way-to-change-the-world",
           "q": "What is the highest-leverage way to change the world?",
           "a": "Systems thinker Donella Meadows ranked the places to intervene in a system and put a society's paradigm, the shared story about how things work, near the very top. Humanity's Checklist follows the same logic: the higher an item sits in the triangle, the more of the world it changes.",
@@ -81,6 +87,12 @@
           "read": "effective-altruism-vs-humanitys-checklist"
         },
         {
+          "id": "what-is-systemic-altruism",
+          "q": "What is systemic altruism?",
+          "a": "Systemic altruism is altruism aimed at the systems that keep producing need, judged by leverage rather than cost per case. Its framework maps symptoms, finds shared sources, ranks them by leverage, finds the flip, picks a beachhead, measures early signals and iterates in the open.",
+          "read": "systemic-altruism"
+        },
+        {
           "id": "critique-of-effective-altruism",
           "q": "What is the main critique of effective altruism?",
           "a": "A common critique is that measuring cost per life saved favors measurable relief over harder-to-measure system change. Humanity's Checklist agrees that relief matters, and argues that the highest-impact giving goes to the root causes that keep creating the need for relief.",
@@ -114,6 +126,12 @@
           "q": "What is charitology?",
           "a": "Charitology is the study of charity: what giving actually changes, why so much of it treats symptoms, and how to aim it at causes. Humanity's Checklist grew out of that study. Learn more at charitology.com.",
           "read": "what-is-charitology"
+        },
+        {
+          "id": "is-there-a-science-of-charity",
+          "q": "Is there a science of charity?",
+          "a": "Giving is studied in pieces by economists, psychologists and philanthropy programs, but it has no widely used name for a unified science. Charitology is a name for that missing science: the study of what charity actually changes and how to make it change more.",
+          "read": "charitology-the-missing-science-of-charity"
         }
       ]
     },
@@ -225,6 +243,13 @@
           "a": "More than $300 billion a year goes to personal designer goods such as handbags, clothing and watches. For a stretch, the richest person on Earth was Bernard Arnault, whose company sells Louis Vuitton, Dior and Tiffany. Status is sold by the bag.",
           "item": "status",
           "read": "giving-as-the-new-status-symbol"
+        },
+        {
+          "id": "wealth-distribution-key-problem",
+          "q": "Is wealth distribution humanity's key problem?",
+          "a": "It decides who can act on every other problem. The richest 10 percent own about 76 percent of global wealth, according to the World Inequality Report 2022. Because surplus wealth follows status, redefining what earns status is one of the strongest ways to change where it flows.",
+          "item": "status",
+          "read": "wealth-distribution-humanitys-key-problem"
         },
         {
           "id": "make-giving-a-status-symbol",

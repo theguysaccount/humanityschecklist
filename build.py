@@ -27,6 +27,8 @@ CONTENT = ROOT / "content"
 DOMAIN = "humanityschecklist.org"
 SITE = f"https://{DOMAIN}"
 REPO = "https://github.com/theguysaccount/humanityschecklist"
+CALENDLY = "https://calendly.com/jackjay"
+TELEGRAM = "https://t.me/web3wizard"
 TODAY = datetime.date.today().isoformat()
 # IndexNow (Bing, Yandex, Seznam, Naver, Yep): the key is public by design; engines
 # fetch /<key>.txt to confirm we own the site before accepting a ping.
@@ -297,6 +299,12 @@ PAGE_CSS = """
 .related { display: grid; gap: 12px; max-width: 68ch; }
 .related ul { display: grid; gap: 8px; }
 .related a { font-family: var(--font-display); font-weight: 700; font-stretch: 82%; font-size: 1.2rem; color: var(--ink); text-decoration-color: var(--bloom); text-underline-offset: 4px; }
+.cta-box a:not(.btn) { color: var(--ink); text-decoration-color: var(--bloom); text-underline-offset: 3px; }
+.all-posts { display: grid; gap: 12px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.all-posts ul { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px 32px; }
+@media (min-width: 720px) { .all-posts ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.all-posts a { color: var(--ink-2); font-size: 1rem; line-height: 1.35; text-underline-offset: 3px; text-decoration-color: var(--rule); }
+.all-posts a:hover { color: var(--ink); text-decoration-color: var(--bloom); }
 
 /* Blog index */
 .post-list { display: grid; gap: 30px; max-width: 74ch; }
@@ -458,6 +466,7 @@ def article_page(page_head, doc, path, kind, posts_by_slug):
         <p class="mini-label">Humanity's Checklist</p>
         <p>Six sources sit upstream of every world problem: the story we tell, how we coordinate, what we can picture, what our feeds reward, what we admire and who gets to build. What if $5 million, spent on those, was all it took?</p>
         <p>{cta_link}</p>
+        <p>Found this and it resonates? <a href="{CALENDLY}">Schedule a call</a> or message <a href="{TELEGRAM}">@web3wizard on Telegram</a>.</p>
       </aside>"""
     cite = ""
     if kind == "Whitepaper":
@@ -475,6 +484,13 @@ def article_page(page_head, doc, path, kind, posts_by_slug):
         if kind == "Blog":
             links += '<li><a href="/whitepaper/">Whitepaper: Fixing the world at the source</a></li>'
         rel = f'<nav class="related" aria-labelledby="rel-title"><h2 class="mini-label" id="rel-title">Keep reading</h2><ul>{links}</ul></nav>'
+    # Every essay links to every other one.
+    others = [p for p in posts_by_slug.values() if p["slug"] != doc["slug"]]
+    every = "".join(f'<li><a href="/blog/{p["slug"]}/">{esc(p["title"])}</a></li>' for p in others)
+    if kind == "Blog":
+        every = '<li><a href="/whitepaper/">Whitepaper: Fixing the World at the Source</a></li>' + every
+    rel += (f'\n      <nav class="all-posts" aria-labelledby="all-title"><h2 class="mini-label" id="all-title">All essays</h2>'
+            f'<ul>{every}</ul><p><a href="/blog/">The blog</a> &middot; <a href="/questions/">Questions</a></p></nav>')
     main_html = f"""<main>
   <article>
     <header class="page-hero">
@@ -618,6 +634,10 @@ Below them sit every world problem: climate change, war, poverty, hunger, diseas
 ## Blog
 
 {post_lines}
+
+## Contact
+
+- [Schedule a call]({CALENDLY}) if this resonates, or message [@web3wizard on Telegram]({TELEGRAM})
 
 ## Contribute
 
