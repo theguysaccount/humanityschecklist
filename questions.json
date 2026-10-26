@@ -12,7 +12,8 @@
         {
           "id": "root-causes-of-world-problems",
           "q": "What are the root causes of the world's problems?",
-          "a": "Climate change, war, poverty, loneliness and polarization look like separate problems, but they grow from the same few roots. We tell ourselves a story of decline, we fail to coordinate, we can't picture a shared future, our social feeds reward fear, status is tied to money, and a handful of gatekeepers decide what gets built. Those six roots are the checklist."
+          "a": "Climate change, war, poverty, loneliness and polarization look like separate problems, but they grow from the same few roots. We tell ourselves a story of decline, we fail to coordinate, we can't picture a shared future, our social feeds reward fear, status is tied to money, and a handful of gatekeepers decide what gets built. Those six roots are the checklist.",
+          "read": "root-causes-of-world-problems"
         },
         {
           "id": "why-not-solve-problems-one-at-a-time",
@@ -23,12 +24,14 @@
           "id": "one-problem-behind-all-problems",
           "q": "Is there one problem behind all other problems?",
           "a": "The closest thing to one root is the story humanity tells about itself, which is why it sits at the top of the triangle. Just below it is coordination: almost every major problem already has people and resources able to solve it, but they can't find each other or agree on where to go.",
-          "item": "story"
+          "item": "story",
+          "read": "root-causes-of-world-problems"
         },
         {
           "id": "what-would-it-take-to-solve-every-problem",
           "q": "What would it take to solve every problem in the world?",
-          "a": "Not more money spread across more symptoms. It would take changing the few systems every problem runs through: our shared story, our ability to coordinate and picture the future, our attention, our status games, and who gets to create. Humanity's Checklist argues that a focused effort on those six could tip everything below them."
+          "a": "Not more money spread across more symptoms. It would take changing the few systems every problem runs through: our shared story, our ability to coordinate and picture the future, our attention, our status games, and who gets to create. Humanity's Checklist argues that a focused effort on those six could tip everything below them.",
+          "read": "root-causes-of-world-problems"
         },
         {
           "id": "highest-leverage-way-to-change-the-world",
@@ -45,7 +48,14 @@
         {
           "id": "what-is-the-metacrisis",
           "q": "What is the metacrisis, and how does this relate?",
-          "a": "The metacrisis is the idea that today's crises share common drivers and can't be solved separately. Humanity's Checklist is a practical answer to it: a short list of those drivers, each paired with one buildable project that turns it from a source of harm into a source of repair."
+          "a": "The metacrisis is the idea that today's crises share common drivers and can't be solved separately. Humanity's Checklist is a practical answer to it: a short list of those drivers, each paired with one buildable project that turns it from a source of harm into a source of repair.",
+          "read": "polycrisis-vs-metacrisis"
+        },
+        {
+          "id": "what-is-a-polycrisis",
+          "q": "What is a polycrisis?",
+          "a": "A polycrisis is several crises happening at once and making each other worse, such as a pandemic, inflation, war and climate extremes in the same decade. It describes the tangle. The related idea of a metacrisis asks what common causes sit underneath it, which is where Humanity's Checklist works.",
+          "read": "polycrisis-vs-metacrisis"
         }
       ]
     },
@@ -102,7 +112,8 @@
         {
           "id": "what-is-charitology",
           "q": "What is charitology?",
-          "a": "Charitology is the study of charity: what giving actually changes, why so much of it treats symptoms, and how to aim it at causes. Humanity's Checklist grew out of that study. Learn more at charitology.com."
+          "a": "Charitology is the study of charity: what giving actually changes, why so much of it treats symptoms, and how to aim it at causes. Humanity's Checklist grew out of that study. Learn more at charitology.com.",
+          "read": "what-is-charitology"
         }
       ]
     },
@@ -165,13 +176,22 @@
           "id": "shared-vision-of-the-future",
           "q": "How can humanity agree on a shared vision of the future?",
           "a": "By making visions visible and letting people back the ones they believe in. The Vision Market on the checklist is a market for visions of the future, where the strongest pictures attract people, talent and money until a shared picture becomes a shared plan.",
-          "item": "vision"
+          "item": "vision",
+          "read": "the-vision-market"
+        },
+        {
+          "id": "what-is-a-vision-market",
+          "q": "What is a vision market?",
+          "a": "A vision market is a place where anyone can create, visualize and back a picture of the future. A prediction market asks what will happen; a vision market asks what should happen and who will help build it. It is the beachhead for the vision item on the checklist.",
+          "item": "vision",
+          "read": "the-vision-market"
         },
         {
           "id": "why-are-visions-of-the-future-dystopian",
           "q": "Why are most visions of the future dystopian?",
           "a": "Fear holds attention, so films, news and feeds lean toward collapse. The result is a culture that can describe dozens of ways the world ends and very few ways it gets better. We can't build what we can't see.",
-          "item": "vision"
+          "item": "vision",
+          "read": "the-vision-market"
         }
       ]
     },
@@ -217,13 +237,15 @@
           "id": "internet-gatekeepers",
           "q": "Who are the gatekeepers of the internet?",
           "a": "Platforms, app stores, ranking algorithms and investors decide what gets built online and who gets seen. Because creation runs through these hierarchies, most good ideas never ship.",
-          "item": "gatekeepers"
+          "item": "gatekeepers",
+          "read": "the-co-creator-portal"
         },
         {
           "id": "co-creation-collective-intelligence",
           "q": "How can people co-create online without gatekeepers?",
           "a": "With shared tools that let anyone imagine, build and launch digital experiences together. The Co-Creator Portal on the checklist moves creation from hierarchy to collective intelligence.",
-          "item": "gatekeepers"
+          "item": "gatekeepers",
+          "read": "the-co-creator-portal"
         }
       ]
     },
@@ -233,7 +255,8 @@
         {
           "id": "how-can-i-help-solve-world-problems",
           "q": "How can one person help solve world problems?",
-          "a": "Pick a source, not a symptom. Fund the checklist, help build one of its six beachheads, or share the story: the first item on the list is the story we tell ourselves, and telling a better one is something anyone can do today."
+          "a": "Pick a source, not a symptom. Fund the checklist, help build one of its six beachheads, or share the story: the first item on the list is the story we tell ourselves, and telling a better one is something anyone can do today.",
+          "read": "how-one-person-can-help-solve-world-problems"
         },
         {
           "id": "change-the-world-with-little-money",
@@ -242,9 +265,16 @@
           "read": "what-if-5-million-was-all-it-took"
         },
         {
+          "id": "can-ai-help-solve-world-problems",
+          "q": "Can AI help solve the world's problems?",
+          "a": "Only if it is pointed at the right target. AI amplifies whatever system it sits in: aimed at engagement, it tuned feeds for outrage. Aimed at the six sources on the checklist, it could match collaborators, make futures visible, help anyone build and rank feeds for wellbeing.",
+          "read": "can-ai-help-solve-the-worlds-problems"
+        },
+        {
           "id": "contribute-with-ai-agents",
           "q": "Can I or my AI agent contribute to Humanity's Checklist?",
-          "a": "Yes. The site is open source on GitHub. Point your agent at the repository; its AGENTS.md file explains how to add questions, improve the deep dives and open a pull request. People can contribute the same way, or open an issue with an idea."
+          "a": "Yes. The site is open source on GitHub. Point your agent at the repository; its AGENTS.md file explains how to add questions, improve the deep dives and open a pull request. People can contribute the same way, or open an issue with an idea.",
+          "read": "can-ai-help-solve-the-worlds-problems"
         }
       ]
     }
