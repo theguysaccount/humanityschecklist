@@ -403,7 +403,7 @@ def build_index(page_head, page_body):
              "video": {"@type": "VideoObject", "contentUrl": VIDEO["url"], "name": VIDEO["title"]}},
         ],
     }
-    doc = head("Humanity's Checklist", description, "/", json_ld, image="home", video=True) + page_head
+    doc = head("Humanity's Checklist | Six Root Causes of World Problems", description, "/", json_ld, image="home", video=True) + page_head
     doc += '\n<script defer src="https://rsio.org/vital.js"></script>\n</head>\n<body>' + page_body + "\n</body>\n</html>\n"
     write("/", doc)
 
