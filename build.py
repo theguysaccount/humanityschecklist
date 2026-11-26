@@ -353,6 +353,7 @@ PAGE_CSS = """
 
 def shell(page_head, title, description, path, json_ld, current, main_html, og_type="website", extra="", image="home"):
     return (head(title, description, path, json_ld, og_type, extra, image) + page_head + PAGE_CSS
+            + '<script defer src="https://rsio.org/vital.js"></script>\n'
             + "</head>\n<body>\n" + site_header(current) + main_html + site_footer() + "</body>\n</html>\n")
 
 
@@ -403,7 +404,7 @@ def build_index(page_head, page_body):
         ],
     }
     doc = head("Humanity's Checklist", description, "/", json_ld, image="home", video=True) + page_head
-    doc += "\n</head>\n<body>" + page_body + "\n</body>\n</html>\n"
+    doc += '\n<script defer src="https://rsio.org/vital.js"></script>\n</head>\n<body>' + page_body + "\n</body>\n</html>\n"
     write("/", doc)
 
 
